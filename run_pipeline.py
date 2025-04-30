@@ -11,6 +11,7 @@ from src.data_cleaning import clean_data
 from src.eda import plot_histogram, plot_boxplot, plot_heatmap, plot_countplot
 from src.data_processing import encode_labels, handle_target_imbalance
 from src.train_test_split import split_data, split_train_test_data
+from src.model_training import default_param_training, tuning_and_best_model_selection
 
 # Import config
 from config import NUMERICAL_COLUMNS
