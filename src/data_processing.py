@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 from sklearn.preprocessing import LabelEncoder
 from config import TARGET_COLUMN
+from imblearn.over_sampling import SMOTE
 
 def encode_labels(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -55,4 +56,30 @@ def encode_labels(data: pd.DataFrame) -> pd.DataFrame:
 
         return data
     except Exception as e:
-        print(f"Failed to process data : {e}")
+        print(f"Failed to encode object columns : {e}")
+
+def handle_target_imbalance(X_train: pd.DataFrame, Y_train: pd.DataFrame) -> tuple:
+    """
+    Handles target imbalance using the 
+    synthetic minority over-sampling technique (SMOTE) 
+    to ensure even distribution of the target variable
+
+    Args:
+        data (pd.DataFrame): The dataset to be processed.
+
+    Raises:
+        Exception: If an error occurs.
+
+    Returns:
+        pd.DataFrame: The processed dataset.
+    """
+    try:
+        # Initialize smote with a random state of 42
+        smote = SMOTE(random_state=42)
+
+        # Oversample the minority class
+        X_train, Y_train = smote.fit_resample(X_train, Y_train)
+
+        return X_train, Y_train
+    except Exception as e:
+        print(f"Failed to oversample minority class : {e}")
