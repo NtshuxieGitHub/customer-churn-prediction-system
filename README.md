@@ -64,7 +64,7 @@ This project involves developing a **Customer Churn Prediction System** using ma
 
 ## 📁 Folder Structure
 
-![alt text](image.png)
+![alt text](image-1.jpg)
 
 ---
 
