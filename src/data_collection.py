@@ -1,6 +1,6 @@
 # Import dependencies
 import pandas as pd
-from config import NUMERICAL_COLUMNS, DATA_TYPE_CHANGE_COLUMN
+from config import NUMERICAL_COLUMNS, DATA_TYPE_CHANGE_COLUMN, DATA_PATH
 
 def collect_data() -> tuple:
     """
@@ -23,7 +23,7 @@ def collect_data() -> tuple:
     """
     try:
         # Load data
-        data = pd.read_csv("../data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv")
+        data = pd.read_csv(DATA_PATH)
 
         # View the first 5 rows of the data and all columns
         pd.set_option('display.max_columns', None)

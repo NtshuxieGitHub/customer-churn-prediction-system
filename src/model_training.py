@@ -137,3 +137,25 @@ def tuning_and_best_model_selection(X_train: pd.DataFrame, Y_train: pd.DataFrame
         return results, best_model
     except Exception as e:
         print(f"Failed to train models using hyperparameter tuning : {e}")
+
+def fit_model(X_train: pd.DataFrame, Y_train: pd.DataFrame, best_model: object) -> object:
+    """
+    Fit the best model to the training data
+
+    Args:
+        X_train (pd.DataFrame): The training data.
+        Y_train (pd.DataFrame): The target data.
+        best_model (object): The best model.
+
+    Raises:
+        - Any errors encountered
+
+    Returns:
+        None
+    """
+    try:
+        # Fit the best model to the training data
+        best_model.fit(X_train, Y_train)
+        return best_model
+    except Exception as e:
+        print(f"Failed to fit best model to training data : {e}")
